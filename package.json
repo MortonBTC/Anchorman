@@ -10,5 +10,9 @@
   "license": "ISC",
   "devDependencies": {
     "gulp": "^3.9.1"
+  },
+  "dependencies": {
+    "gulp-browserify": "^0.5.1",
+    "gulp-sass": "^2.3.1"
   }
 }
