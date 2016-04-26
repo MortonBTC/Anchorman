@@ -14,8 +14,16 @@ app.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 
-app.controller('ListController', ['$scope', 'StoriesService', function($scope, StoriesService) {
-    
+app.controller('ListController', ['$scope', '$http', 'StoriesService', function($scope, $http, StoriesService) {
+    $http({
+        method : "GET",
+        url : "http://gateway.marvel.com:80/v1/public/characters?apikey=aecaf7c9b04cdd88b0fa5903dbe6402e&limit=100"
+    }).then(function mySucces(response) {
+        var stories = response.data;
+        console.log(stories)
+    }, function myError(response) {
+        console.log(response.statusText);
+    });
     
 }]);
 
@@ -34,7 +42,9 @@ app.controller('SavedController', ['$scope', 'StoriesService', function($scope, 
 app.factory('StoriesService', function() {
     var stories = [];
     
+    
     return {
         
-    };
+        
+    }
 });
