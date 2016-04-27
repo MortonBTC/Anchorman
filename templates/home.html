@@ -1,0 +1,10 @@
+<!doctype html>
+<div id="home">
+   <h2>News Feed:</h2>
+      <div ng-click="getStory(story)" ng-repeat="story in stories" class="news-story">
+
+          <h4>{{ story.title }}</h4>
+          <p>{{ story.published }}</p>
+          
+      </div>
+</div>
