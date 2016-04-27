@@ -1,7 +1,8 @@
+<!doctype html>
 <html>
 	<head>
         <title>Anchorman</title>
-		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="scss/main.scss">
         <script src="http://underscorejs.org/underscore-min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-route.min.js"></script>
@@ -11,12 +12,18 @@
 		<h1>Anchorman</h1>
         <div id="topbar">
             <img src="http://screenrant.com/wp-content/uploads/Anchorman-2-Interviews.jpg">
-            <div id="menu">
-                <div id ="home">Home</div>
-                <div id ="interest">Interest</div>
-                <div id ="saved">Saved</div>
-            </div>
-        </div>
+						<div id="navigation">
+						  <a href="#">Home</a>
+			 				<a href="#">Interests</a>
+			 				<a href="#">Saved</a>
+
+      			</div>
+				</div>
+
+				<div ng-view id="content">
+				<!--Showing the content  -->
+
+				</div>
 
 	</body>
 </html>
