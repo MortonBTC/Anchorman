@@ -21,8 +21,15 @@ gulp.task('js', function () {
         .pipe(gulp.dest('./public/js'));
 });
 
-gulp.task('watch', function () {
+
+gulp.task('templates', function() {
+    return gulp.src('./templates/*.html')
+        .pipe(gulp.dest('./public/templates/'));
+});
+
+gulp.task('watch', function() {
     gulp.watch('./*.html', ['html']);
+    gulp.watch('./templates/*.html', ['templates']);
     gulp.watch('./scss/*.scss', ['css']);
     gulp.watch('./js/*.js', ['js']);
 });
