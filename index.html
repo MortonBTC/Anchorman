@@ -12,11 +12,14 @@
         <div id="topbar">
             <img src="http://screenrant.com/wp-content/uploads/Anchorman-2-Interviews.jpg">
             <div id="menu">
-                <div id ="home"><a href="#templates/list.html"> Home</a></div>
-                <div id ="interest"><a href="#templates/interests.html">Interest</a></div>
-                <div id ="saved"><a href="#templates/saved.html">Saved</a></div>
+                <div id ="home"><a href="#/home"> Home</a></div>
+                <div id ="interest"><a href="#/interests">Interest</a></div>
+                <div id ="saved"><a href="#/saved">Saved</a></div>
             </div>
         </div>
-        
+        <div ng-view id="content">
+				<!--Showing the content  -->
+        </div>
+
 	</body>
 </html>

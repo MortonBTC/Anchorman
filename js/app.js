@@ -1,50 +1,53 @@
 var app = angular.module('AnchormanApp', ['ngRoute']);
 
 app.config(['$routeProvider', function ($routeProvider) {
-    $routeProvider.when('/list', {
+    $routeProvider.when('/home', {
         controller: 'ListController',
-        templateUrl: 'templates/list.html',
+        templateUrl: 'templates/home.html',
     }).when('/interests', {
         controller: 'InterestsController',
         templateUrl: 'templates/interests.html',
     }).when('/saved', {
         controller: 'SavedController',
         templateUrl: 'templates/saved.html',
-    });
+    })
+
 }]);
 
 
-app.controller('ListController', ['$scope', '$http', 'StoriesService', function($scope, $http, StoriesService) {
-    $http({
-        method : "GET",
-        url : "http://gateway.marvel.com:80/v1/public/characters?apikey=aecaf7c9b04cdd88b0fa5903dbe6402e&limit=100"
-    }).then(function mySucces(response) {
-        var stories = response.data;
-        console.log(stories)
-    }, function myError(response) {
-        console.log(response.statusText);
-    });
+app.controller('ListController', ['$scope', '$http', 'NewsService', function($scope, $http, NewsService) {
+    console.log('working')
+    NewsService.getNews().then(function (data) {
+      console.log(data);
+      $scope.stories = data.data.stories;
+   });
+
     
 }]);
 
-app.controller('InterestsController', ['$scope', 'StoriesService', function($scope, StoriesService) {
-    
-    
-}]);
-
-app.controller('SavedController', ['$scope', 'StoriesService', function($scope, StoriesService) {
+app.controller('InterestsController', ['$scope', '$http', 'NewsService', function($scope, $http, NewsService) {
     
     
 }]);
 
-
-
-app.factory('StoriesService', function() {
-    var stories = [];
+app.controller('SavedController', ['$scope', '$http', 'NewsService', function($scope, $http, NewsService) {
     
     
-    return {
-        
-        
-    }
+}]);
+
+
+
+app.factory('NewsService', function($http) {
+    var news = $http({
+      method: 'GET',
+      url: 'http://chat.queencityiron.com/api/news/latest'
+   }).then(function (response) {
+      return response;
+   });
+
+   return {
+      getNews: function () {
+         return news;
+      }
+   };
 });

@@ -9,6 +9,11 @@ gulp.task('html', function () {
         .pipe(gulp.dest('./public'));
 });
 
+gulp.task('html', function () {
+    return gulp.src('./templates/*.html')
+        .pipe(gulp.dest('./public/templates'));
+});
+
 gulp.task('css', function () {
     return gulp.src('./scss/*.scss')
         .pipe(sass())
