@@ -1,3 +1,4 @@
+var moment = require('moment');
 var app = angular.module('AnchormanApp', ['ngRoute']);
 
 app.config(['$routeProvider', function ($routeProvider) {
@@ -20,6 +21,9 @@ app.controller('ListController', ['$scope', '$http', 'NewsService', function($sc
     NewsService.getNews().then(function (data) {
       console.log(data);
       $scope.stories = data.data.stories;
+        for (var i = 0; i < $scope.stories.length; i++) {
+      $scope.stories[i].published = moment(data.data.stories[i].published).format('MMMM Do YYYY, h:mm:ss a');
+        }
    });
 
     
